@@ -6,6 +6,7 @@
 /// <reference path="../typings/soundjs/soundjs.d.ts" />
 /// <reference path="../typings/preloadjs/preloadjs.d.ts" />
 /// <reference path="../objects/label.ts" />
+/// <reference path="../objects/button.ts" />
 // GLOBAL GAME FRAMEWORK VARIABLES
 var canvas;
 var stage;
@@ -13,6 +14,8 @@ var stats;
 // GAME VARIABLES
 var helloLabel;
 var startButton;
+var nextButton;
+var backButton;
 function init() {
     console.log("Game Started...");
     canvas = document.getElementById("canvas"); // reference to canvas element
@@ -42,20 +45,13 @@ function setupStats() {
 function clickStartButton(event) {
     helloLabel.text = "Clicked";
 }
-function overStartButton(event) {
-    startButton.alpha = 0.7;
-}
-function outStartButton(event) {
-    startButton.alpha = 1.0;
-}
 // FUN HAPPENS HERE
 function main() {
+    // hello label
     helloLabel = new objects.Label("Game Start", "60px Consolas", "#000000", 320, 240);
     stage.addChild(helloLabel); // add label to the stage
-    startButton = new createjs.Bitmap("../../Assets/images/StartButton.png");
-    startButton.on("click", clickStartButton, this);
-    startButton.on("mouseover", overStartButton, this);
-    startButton.on("mouseout", outStartButton, this); // click, mouseover, mouseout = already created enumerations
+    // start button
+    startButton = new objects.Button("StartButton", 320, 340);
+    startButton.on("click", clickStartButton, this); // click, mouseover, mouseout = already created enumerations
     stage.addChild(startButton);
 }
-//# sourceMappingURL=game.js.map
