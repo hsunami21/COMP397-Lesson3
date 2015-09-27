@@ -14,12 +14,13 @@ var stats: Stats;
 
 // GAME VARIABLES
 var helloLabel: objects.Label;
-var goodbyeLabel: objects.Label;
+var startButton: createjs.Bitmap;
 
 function init(): void {
     console.log("Game Started...");
     canvas = document.getElementById("canvas"); // reference to canvas element
     stage = new createjs.Stage(canvas); // passing canvas to stage
+    stage.enableMouseOver(20); // enable mouse events
     createjs.Ticker.setFPS(60); // set frame rate to 60fps
     createjs.Ticker.on("tick", gameLoop); // update gameLoop every frame
     setupStats(); // sets up our stats counter
@@ -46,9 +47,28 @@ function setupStats(): void {
     document.body.appendChild(stats.domElement);
 }
 
+// EVENT HANDLERS
+function clickStartButton(event: createjs.MouseEvent): void {
+    helloLabel.text = "Clicked";
+}
+
+function overStartButton(event: createjs.MouseEvent): void {
+    startButton.alpha = 0.7;
+}
+
+function outStartButton(event: createjs.MouseEvent): void {
+    startButton.alpha = 1.0;
+}
+
 // FUN HAPPENS HERE
 function main(): void {
     helloLabel = new objects.Label("Game Start", "60px Consolas", "#000000", 320, 240);
     stage.addChild(helloLabel); // add label to the stage
 
+    startButton = new createjs.Bitmap("../../Assets/images/StartButton.png");
+    startButton.on("click", clickStartButton, this);
+    startButton.on("mouseover", overStartButton, this);
+    startButton.on("mouseout", outStartButton, this); // click, mouseover, mouseout = already created enumerations
+
+    stage.addChild(startButton);
 }
