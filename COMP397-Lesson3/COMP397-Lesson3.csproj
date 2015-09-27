@@ -68,6 +68,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\images\BackButton.png" />
+    <Content Include="Assets\images\NextButton.png" />
+    <Content Include="Assets\images\StartButton.png" />
     <Content Include="packages.config" />
     <Content Include="Scripts\lib\jquery-2.1.4.min.map" />
     <None Include="Web.Debug.config">
@@ -97,7 +100,6 @@
   <ItemGroup>
     <Folder Include="Assets\audio\" />
     <Folder Include="Assets\fonts\" />
-    <Folder Include="Assets\images\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\core\game.ts" />
